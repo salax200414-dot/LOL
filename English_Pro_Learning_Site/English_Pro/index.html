@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f4f7f2" />
+  <title>English Pro — Learn English</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="English Pro home"><span class="brand-mark">L</span><span>English Pro</span></a>
+      <nav class="side-nav" aria-label="Main navigation">
+        <button class="nav-link active" data-page="home"><span>⌂</span> Главная</button>
+        <button class="nav-link" data-page="course"><span>▤</span> Мой курс</button>
+        <button class="nav-link" data-page="vocabulary"><span>▣</span> Словарь</button>
+        <button class="nav-link" data-page="stats"><span>▥</span> Статистика</button>
+        <button class="nav-link" data-page="profile"><span>◉</span> Профиль</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="mini-card"><span class="mini-icon">🔥</span><div><b id="sideStreak">0 дней</b><small>Твоя серия</small></div></div>
+        <button class="theme-toggle" id="themeToggle"><span id="themeIcon">☾</span><span id="themeText">Ночной режим</span></button>
+        <button class="text-button" id="logoutBtn">Выйти из аккаунта ↗</button>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Открыть меню">☰</button>
+        <div class="topbar-title"><span class="eyebrow">ТВОЙ ПУТЬ К АНГЛИЙСКОМУ</span><b id="headerGreeting">Добро пожаловать!</b></div>
+        <div class="top-stats">
+          <div class="stat-pill"><span>🔥</span><b id="topStreak">0</b><small>дней</small></div>
+          <div class="stat-pill"><span>⚡</span><b id="topXp">0</b><small>XP</small></div>
+          <div class="avatar" id="topAvatar">S</div>
+        </div>
+      </header>
+
+      <section id="page-home" class="page active">
+        <div class="welcome-banner">
+          <div class="welcome-copy"><span class="eyebrow light">НЕБОЛЬШОЙ ШАГ К БОЛЬШОЙ ЦЕЛИ</span><h1 id="welcomeTitle">Привет! Готов учить английский?</h1><p>Занимайся каждый день, набирай опыт и постепенно выходи на новый уровень.</p><button class="primary-btn" id="continueBtn">Продолжить обучение <span>→</span></button></div>
+          <div class="mascot" aria-hidden="true">🦉<span class="sparkle">✦</span></div>
+        </div>
+
+        <div class="metric-grid">
+          <article class="metric-card"><div class="metric-icon fire">🔥</div><div><small>Текущая серия</small><strong id="streakValue">0 дней</strong><span class="muted" id="streakHint">Начни сегодня!</span></div></article>
+          <article class="metric-card"><div class="metric-icon bolt">⚡</div><div><small>Всего опыта</small><strong id="xpValue">0 XP</strong><span class="muted">Продолжай в том же духе</span></div></article>
+          <article class="metric-card"><div class="metric-icon book">📘</div><div><small>Уроки завершены</small><strong id="lessonsValue">0</strong><span class="muted">Каждый урок приближает к цели</span></div></article>
+          <article class="metric-card"><div class="metric-icon target">🎯</div><div><small>Цель на сегодня</small><strong id="goalValue">10 минут</strong><span class="muted">Регулярность важнее скорости</span></div></article>
+        </div>
+
+        <div class="section-heading"><div><span class="eyebrow">ТВОЯ ПРОГРАММА</span><h2>Продолжай свой путь</h2></div><button class="ghost-btn" data-goto="course">Все уроки →</button></div>
+        <div class="course-card">
+          <div class="course-card-top"><div class="course-symbol">🇬🇧</div><div class="course-info"><span class="level-tag" id="levelTag">A1 · Beginner</span><h3>Английский язык</h3><p id="courseDescription">Начни с основ и двигайся вперёд шаг за шагом.</p></div><div class="course-percent" id="coursePercent">0%</div></div>
+          <div class="progress-track"><div class="progress-fill" id="courseProgress"></div></div>
+          <div class="course-card-bottom"><span id="courseProgressText">0 из 10 уроков</span><button class="primary-btn small" id="startLessonBtn">Начать урок →</button></div>
+        </div>
+
+        <div class="section-heading"><div><span class="eyebrow">ПОЛЕЗНАЯ ПРИВЫЧКА</span><h2>Твоя активность</h2></div></div>
+        <div class="activity-card"><div class="activity-copy"><b>Каждый день — это победа!</b><p>Открой хотя бы один урок сегодня, чтобы поддержать свою серию.</p></div><div class="week-days" id="weekDays"></div></div>
+      </section>
+
+      <section id="page-course" class="page">
+        <div class="page-intro"><span class="eyebrow">ОБУЧЕНИЕ</span><h1>Мой курс</h1><p>Проходи уроки по порядку. Завершённые уроки сохраняются в твоём профиле.</p></div>
+        <div class="path-card"><div class="path-header"><div><span class="level-tag" id="courseLevelTag">A1 · Beginner</span><h2>Первые шаги в английском</h2></div><span class="path-flag">🇬🇧</span></div><div id="lessonList" class="lesson-list"></div></div>
+      </section>
+
+      <section id="page-vocabulary" class="page">
+        <div class="page-intro"><span class="eyebrow">СЛОВАРНЫЙ ЗАПАС</span><h1>Словарь</h1><p>Повторяй полезные слова и добавляй их в избранное.</p></div>
+        <div class="vocab-grid" id="vocabGrid"></div>
+      </section>
+
+      <section id="page-stats" class="page">
+        <div class="page-intro"><span class="eyebrow">ТВОИ РЕЗУЛЬТАТЫ</span><h1>Статистика</h1><p>Смотри, сколько ты уже сделал для своего английского.</p></div>
+        <div class="metric-grid stats-grid">
+          <article class="metric-card"><div class="metric-icon fire">🔥</div><div><small>Текущая серия</small><strong id="statsStreak">0 дней</strong></div></article>
+          <article class="metric-card"><div class="metric-icon bolt">⚡</div><div><small>Всего XP</small><strong id="statsXp">0</strong></div></article>
+          <article class="metric-card"><div class="metric-icon book">📘</div><div><small>Уроки</small><strong id="statsLessons">0</strong></div></article>
+        </div>
+        <div class="activity-card large-activity"><div><b>Календарь активности</b><p>Дни, когда ты занимался и поддерживал серию.</p></div><div id="calendarGrid" class="calendar-grid"></div></div>
+      </section>
+
+      <section id="page-profile" class="page">
+        <div class="page-intro"><span class="eyebrow">НАСТРОЙКИ</span><h1>Мой профиль</h1><p>Управляй своим обучением и настройками сайта.</p></div>
+        <div class="settings-card">
+          <div class="profile-head"><div class="avatar big" id="profileAvatar">S</div><div><h2 id="profileName">Ученик</h2><p id="profileEmail">email@example.com</p></div></div>
+          <div class="settings-row"><div><b>Мой уровень</b><small>Текущий уровень английского</small></div><select id="profileLevel"><option value="A0">A0 — С нуля</option><option value="A1">A1 — Начальный</option><option value="A2">A2 — Элементарный</option><option value="B1">B1 — Средний</option><option value="B2">B2 — Выше среднего</option><option value="C1">C1 — Продвинутый</option><option value="C2">C2 — Свободное владение</option></select></div>
+          <div class="settings-row"><div><b>Цель на день</b><small>Сколько минут заниматься ежедневно</small></div><select id="profileGoal"><option value="5">5 минут</option><option value="10">10 минут</option><option value="15">15 минут</option><option value="20">20 минут</option><option value="30">30 минут</option><option value="60">60 минут</option></select></div>
+          <div class="settings-row"><div><b>Тема оформления</b><small>Дневной или ночной режим</small></div><button class="secondary-btn" id="profileThemeBtn">Переключить тему</button></div>
+          <div class="settings-actions"><button class="primary-btn" id="saveProfileBtn">Сохранить настройки</button><button class="danger-btn" id="resetBtn">Сбросить прогресс</button></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <nav class="mobile-nav" aria-label="Mobile navigation">
+    <button class="active" data-page="home"><span>⌂</span><small>Главная</small></button>
+    <button data-page="course"><span>▤</span><small>Курс</small></button>
+    <button data-page="vocabulary"><span>▣</span><small>Словарь</small></button>
+    <button data-page="stats"><span>▥</span><small>Статистика</small></button>
+    <button data-page="profile"><span>◉</span><small>Профиль</small></button>
+  </nav>
+
+  <div class="modal-backdrop" id="authModal">
+    <div class="auth-card">
+      <div class="auth-brand"><span class="brand-mark">L</span><b>English Pro</b></div>
+      <div id="authFormWrap">
+        <span class="eyebrow">ТВОЁ ПРИКЛЮЧЕНИЕ НАЧИНАЕТСЯ ЗДЕСЬ</span><h1 id="authTitle">Создай аккаунт</h1><p class="auth-subtitle" id="authSubtitle">Сохраняй прогресс и учи английский в своём темпе.</p>
+        <form id="authForm">
+          <label>Твоё имя<input id="authName" type="text" placeholder="Например, Alex" required /></label>
+          <label>Email<input id="authEmail" type="email" placeholder="name@example.com" required /></label>
+          <label>Пароль<input id="authPassword" type="password" minlength="4" placeholder="Минимум 4 символа" required /></label>
+          <label id="confirmLabel">Повтори пароль<input id="authConfirm" type="password" minlength="4" placeholder="Повтори пароль" required /></label>
+          <button class="primary-btn full" type="submit" id="authSubmit">Создать аккаунт →</button>
+        </form>
+        <p class="auth-switch"><span id="authSwitchText">Уже есть аккаунт?</span> <button id="authSwitchBtn" type="button">Войти</button></p>
+        <p class="demo-note">Демо-версия: данные сохраняются в этом браузере.</p>
+      </div>
+      <div id="levelSetup" class="hidden">
+        <span class="eyebrow">ПЕРСОНАЛЬНЫЙ СТАРТ</span><h1>С какого уровня начнём?</h1><p class="auth-subtitle">Выбери свой уровень. Его можно будет изменить позже.</p>
+        <div class="level-options">
+          <button data-level="A0"><b>A0</b><span>Я совсем новичок</span></button><button data-level="A1"><b>A1</b><span>Знаю простые слова</span></button><button data-level="A2"><b>A2</b><span>Могу говорить простыми фразами</span></button><button data-level="B1"><b>B1</b><span>Понимаю обычные разговоры</span></button><button data-level="B2"><b>B2</b><span>Уверенно общаюсь</span></button><button data-level="C1"><b>C1</b><span>Хорошо владею языком</span></button><button data-level="C2"><b>C2</b><span>Почти как носитель</span></button>
+        </div>
+        <label class="goal-label">Моя ежедневная цель<select id="setupGoal"><option value="5">5 минут</option><option value="10" selected>10 минут</option><option value="15">15 минут</option><option value="20">20 минут</option><option value="30">30 минут</option><option value="60">60 минут</option></select></label>
+        <button class="primary-btn full" id="finishSetup" disabled>Начать обучение →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop hidden" id="lessonModal">
+    <div class="lesson-modal">
+      <div class="lesson-modal-top"><span class="level-tag">МИНИ-УРОК</span><button class="icon-button" id="closeLesson" aria-label="Закрыть">✕</button></div>
+      <div class="quiz-progress"><div id="quizProgressFill"></div></div>
+      <div id="lessonContent"></div>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
